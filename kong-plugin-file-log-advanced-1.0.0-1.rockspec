@@ -1,7 +1,7 @@
 package = "kong-plugin-file-log-advanced"
 version = "1.0.0-1"
 source = {
-  url = "git://github.com/zenvia/kong-plugin-http-log-with-body",
+  url = "git@github.com:gogomarine/kong-plugin-file-log-advanced.git",
   branch = "master"
 }
 dependencies = {
