@@ -1,5 +1,5 @@
 package = "kong-plugin-file-log-advanced"
-version = "1.0.0-1"
+version = "3.0.0-1"
 source = {
   url = "git://github.com/gogomarine/kong-plugin-file-log-advanced",
   branch = "master"
