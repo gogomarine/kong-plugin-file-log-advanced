@@ -3,9 +3,11 @@ local ffi = require "ffi"
 local cjson = require "cjson"
 local system_constants = require "lua_system_constants"
 local serializer = require "kong.plugins.file-log-advanced.serializer"
-local BasePlugin = require "kong.plugins.base_plugin"
+-- local BasePlugin = require "kong.plugins.base_plugin"
 local req_read_body = ngx.req.read_body
 local req_get_body_data = ngx.req.get_body_data
+
+
 
 local ngx_timer = ngx.timer.at
 local string_len = string.len
@@ -64,9 +66,13 @@ local function log(premature, conf, message)
   ffi.C.write(fd, string_to_char(msg), string_len(msg))
 end
 
-local FileLogExtendedHandler = BasePlugin:extend()
+-- local FileLogExtendedHandler = BasePlugin:extend()
 
-FileLogExtendedHandler.PRIORITY = 1
+-- 日志处理器
+local FileLogExtendedHandler = {
+  VERSION  = "3.0.0",
+  PRIORITY = 1,
+}
 
 function FileLogExtendedHandler:new()
   FileLogExtendedHandler.super.new(self, "file-log-advanced")
