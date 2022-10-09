@@ -39,6 +39,5 @@ luarocks upload kong-plugin-file-log-advanced-3.0.0-1.rockspec --api-key=your-ap
 
 2022/10/09 11:51:25 [error] 187197#0: init_by_lua error: /usr/local/share/lua/5.1/kong/tools/utils.lua:701: error loading module 'kong.plugins.file-log-advanced.handler':
 ...share/lua/5.1/kong/plugins/file-log-advanced/handler.lua:6: module 'kong.plugins.base_plugin' not found:No LuaRocks module found for kong.plugins.base_plugin
-
 ```
 
