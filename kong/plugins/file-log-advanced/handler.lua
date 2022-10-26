@@ -3,7 +3,6 @@ local ffi = require "ffi"
 local cjson = require "cjson"
 local system_constants = require "lua_system_constants"
 local serializer = require "kong.plugins.file-log-advanced.serializer"
--- local BasePlugin = require "kong.plugins.base_plugin"
 local req_read_body = ngx.req.read_body
 local req_get_body_data = ngx.req.get_body_data
 local bit           = require "bit"
@@ -66,7 +65,6 @@ local function log(premature, conf, message)
   ffi.C.write(fd, string_to_char(msg), string_len(msg))
 end
 
--- local FileLogExtendedHandler = BasePlugin:extend()
 
 -- 日志处理器
 local FileLogExtendedHandler = {
@@ -74,14 +72,7 @@ local FileLogExtendedHandler = {
   PRIORITY = 1,
 }
 
-function FileLogExtendedHandler:new()
-  FileLogExtendedHandler.super.new(self, "file-log-advanced")
-end
-
 function FileLogExtendedHandler:access(conf)
-  FileLogExtendedHandler.super.access(self)
-
-
   ngx.ctx.file_log_extended_req_body = ""
   if conf.log_request then
     local ctx = kong.ctx.plugin;
@@ -90,8 +81,6 @@ function FileLogExtendedHandler:access(conf)
 end
 
 function FileLogExtendedHandler:body_filter(conf)
-  FileLogExtendedHandler.super.body_filter(self)
-
   if conf.log_response then
     local ctx = kong.ctx.plugin;
     local chunk, eof = ngx.arg[1], ngx.arg[2];
@@ -102,7 +91,6 @@ function FileLogExtendedHandler:body_filter(conf)
 end
 
 function FileLogExtendedHandler:log(conf)
-  FileLogExtendedHandler.super.log(self)
   local message = serializer.serialize(ngx)
 
   local ok, err = ngx_timer(0, log, conf, message)
