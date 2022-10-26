@@ -1,11 +1,16 @@
 -- Copyright (C) Mashape, Inc.
+local kong = kong
+local ngx = ngx
+
 local ffi = require "ffi"
 local cjson = require "cjson"
 local system_constants = require "lua_system_constants"
 local serializer = require "kong.plugins.file-log-advanced.serializer"
+
 local req_read_body = ngx.req.read_body
 local req_get_body_data = ngx.req.get_body_data
 local bit           = require "bit"
+
 
 
 local ngx_timer = ngx.timer.at
@@ -75,7 +80,6 @@ local FileLogExtendedHandler = {
 function FileLogExtendedHandler:access(conf)
   ngx.ctx.file_log_extended_req_body = ""
   if conf.log_request then
-    local ctx = kong.ctx.plugin;
     ngx.ctx.file_log_extended_req_body = kong.request.get_raw_body()
   end
 end
