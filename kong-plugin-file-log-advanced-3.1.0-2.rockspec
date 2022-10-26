@@ -1,6 +1,6 @@
 local plugin_name = "file-log-advanced"
 local package_name = "kong-plugin-" .. plugin_name
-local package_version = "3.0.0"
+local package_version = "3.1.0"
 local rockspec_revision = "2"
 
 local github_account_name = "gogomarine"

@@ -73,8 +73,8 @@ end
 
 -- 日志处理器
 local FileLogExtendedHandler = {
-  VERSION  = "3.0.0",
-  PRIORITY = 1,
+  VERSION  = "3.1.0",
+  PRIORITY = 30,
 }
 
 function FileLogExtendedHandler:access(conf)
