@@ -6,7 +6,7 @@ local serializer = require "kong.plugins.file-log-advanced.serializer"
 -- local BasePlugin = require "kong.plugins.base_plugin"
 local req_read_body = ngx.req.read_body
 local req_get_body_data = ngx.req.get_body_data
-
+local bit           = require "bit"
 
 
 local ngx_timer = ngx.timer.at
